@@ -4,7 +4,7 @@ application:
   sdlcType: EDM
   appType: Webapp
   webservice: true
-  restApi: true
+  restApi: false
   microservice: false
   projectLanguage: Java
   platformVersion: Java 8
