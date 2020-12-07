@@ -22,8 +22,8 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }}
       
-    - name: Fetch Scan Results
-      uses: devsecops-test/polaris-action@4f23c76
+    - name: Static Analysis with Polaris Action
+      uses: devsecops-test/polaris-action@v1
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
