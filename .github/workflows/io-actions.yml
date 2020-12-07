@@ -23,7 +23,7 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       
     - name: Fetch Scan Results
-      uses: devsecops-test/polaris-action@v1-beta.5
+      uses: devsecops-test/polaris-action@4f23c76
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
