@@ -27,22 +27,8 @@ jobs:
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
-        polarisProjectName: NodeGoat
+        polarisProjectName: alibaba/arthas
         polarisAdditionalArgs: "--coverity-ignore-capture-failure"
-   
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v1
-        release_name: Test Reports
-        draft: false
-        prerelease: false
-    
-    - name: Print
-      run: echo ${{ steps.create_release.outputs.upload_url }}
     
     - name: Upload Release Asset
       id: upload-release-asset 
@@ -50,9 +36,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/35071535/assets{?name,label}'
         asset_path: polaris-scan-results.sarif.json
-        asset_name: NodeGoat-sarif.json
+        asset_name: alibaba-arthas.sarif.json
         asset_content_type: application/json
     
     - name: Upload SARIF file
