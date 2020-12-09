@@ -27,7 +27,7 @@ jobs:
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
-        polarisProjectName: NodeGoat
+        polarisProjectName: BouncyCastle.Java
         polarisAdditionalArgs: "--coverity-ignore-capture-failure"
    
     - name: Create Release
@@ -41,18 +41,15 @@ jobs:
         draft: false
         prerelease: false
     
-    - name: Print
-      run: echo ${{ steps.create_release.outputs.upload_url }} 
-    
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1.0.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  
+        upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/35071300/assets{?name,label}'
         asset_path: polaris-scan-results.sarif.json
-        asset_name: nodeGoat-sarif.json
+        asset_name: BouncyCastleJava-sarif.json
         asset_content_type: application/json
     
     - name: Upload SARIF file
