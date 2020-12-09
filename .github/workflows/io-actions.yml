@@ -36,7 +36,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/v1/assets{?name,label}'
+        upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/35071535/assets{?name,label}'
         asset_path: polaris-scan-results.sarif.json
         asset_name: PythonDotOrg.sarif.json
         asset_content_type: application/json
