@@ -27,7 +27,7 @@ jobs:
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
-        polarisProjectName: BouncyCastle.Java
+        polarisProjectName: NodeGoat
         polarisAdditionalArgs: "--coverity-ignore-capture-failure"
    
     - name: Upload SARIF file
