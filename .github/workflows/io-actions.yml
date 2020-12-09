@@ -29,15 +29,6 @@ jobs:
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
         polarisProjectName: NodeGoat
         polarisAdditionalArgs: "--coverity-ignore-capture-failure"
-    
-    - name: Upload Release Asset
-      uses: Fhwang0926/upload-release-asset@v1.1.17
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/v1.beta-1/assets'  
-        asset_name: ./polaris-scan-results.sarif.json
-        asset_label: nodeGoat_sarif
    
     - name: Upload Release Asset
       id: upload-release-asset 
@@ -47,8 +38,8 @@ jobs:
       with:
         upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/v1.beta-1/assets'  
         asset_path: ./polaris-scan-results.sarif.json
-        asset_name: 'nodeGoat-sarif.json'
-        asset_content_type: test
+        asset_name: nodeGoat-sarif.json
+        asset_content_type: application/json
    
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
