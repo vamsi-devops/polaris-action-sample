@@ -1,7 +1,7 @@
 version: "1"
 install:
   coverity:
-    version: latest
+    version: 2020.09
 project:
   name: "NodeGoat"
   branch: "origin/master"

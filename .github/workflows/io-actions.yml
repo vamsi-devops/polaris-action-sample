@@ -23,13 +23,13 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       
     - name: Static Analysis with Polaris Action
-      uses: devsecops-test/polaris-action@v1
+      uses: devsecops-test/polaris-action@2935243
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
         polarisProjectName: NodeGoat
-        polarisAdditionalArgs: "--coverity-ignore-capture-failure"
-    
+	polarisAdditionalArgs: "--coverity-ignore-capture-failure"
+
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:
