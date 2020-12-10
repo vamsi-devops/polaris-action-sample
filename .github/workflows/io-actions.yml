@@ -23,11 +23,11 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       
     - name: Static Analysis with Polaris Action
-      uses: devsecops-test/polaris-action@f18eea8
+      uses: devsecops-test/polaris-action@v1
       with:
-        polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
-        polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
-        polarisProjectName: OWASP/Benchmark
+        polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
+        polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
+        polarisProjectName: insecure-bank
         polarisAdditionalArgs: "--coverity-ignore-capture-failure"
     
     - name: Upload Release Asset
@@ -38,7 +38,7 @@ jobs:
       with:
         upload_url: 'https://uploads.github.com/repos/devsecops-test/polaris-action-sample/releases/35071535/assets{?name,label}'
         asset_path: polaris-scan-results.sarif.json
-        asset_name: OWASP-Benchmark.sarif.json
+        asset_name: insecure-bank.sarif.json
         asset_content_type: application/json
     
     - name: Upload SARIF file
