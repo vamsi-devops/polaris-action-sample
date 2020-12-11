@@ -31,7 +31,7 @@ jobs:
     #    polarisAdditionalArgs: "--coverity-ignore-capture-failure"
     
     - name: Incremental Static Analysis with Polaris Action for a single commit
-      uses: devsecops-test/polaris-action@12c89fb
+      uses: devsecops-test/polaris-action@66cd478
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
