@@ -22,13 +22,23 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }}
       
-    - name: Static Analysis with Polaris Action
-      uses: devsecops-test/polaris-action@v1
+    #- name: Static Analysis with Polaris Action
+    #  uses: devsecops-test/polaris-action@v1
+    #  with:
+    #    polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
+    #    polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
+    #    polarisProjectName: insecure-bank
+    #    polarisAdditionalArgs: "--coverity-ignore-capture-failure"
+    
+    - name: Incremental Static Analysis with Polaris Action for a single commit
+      uses: devsecops-test/polaris-action@12c89fb
       with:
-        polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
-        polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
+        polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
+        polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN}}
         polarisProjectName: insecure-bank
-        polarisAdditionalArgs: "--coverity-ignore-capture-failure"
+        polarisAdditionalArgs: --coverity-ignore-capture-failure --incremental polaris-files-to-scan.txt | tee polaris-output.txt
+        githubUrl: https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA
+        #githubCreds: "${{secrets.GITHUB_USERNAME}}:${{secrets.GITHUB_TOKEN}}"     #Needed only if repository is private
     
     - name: Upload Release Asset
       id: upload-release-asset 
