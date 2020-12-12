@@ -71,7 +71,7 @@ public class TransfersFacadeImpl implements TransfersFacade {
 		/*
 		 * Actualizar tabla de CreditAcount destino
 		 */
-		actualAmount = cashAccountDao.getFromAccountActualAmount(transfer.getToAccount());
+		
 		actualAmount = cashAccountDao.getFromAccountActualAmount(transfer.getToAccount());
 		amountTotal = actualAmount + transfer.getAmount();
 		creditAccountDao.updateCreditAccount(toCashAccountId, InsecureBankUtils.round(amountTotal, 2));
