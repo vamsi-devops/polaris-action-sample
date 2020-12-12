@@ -24,16 +24,15 @@ jobs:
     - run: git checkout HEAD^2
       if: ${{ github.event_name == 'pull_request' }}
       
-    #- name: Static Analysis with Polaris Action
-    #  uses: devsecops-test/polaris-action@v1
-    #  with:
-    #    polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
-    #    polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
-    #    polarisProjectName: polaris-action-sample
-    #    polarisAdditionalArgs: "--coverity-ignore-capture-failure"
+    - name: Static Analysis with Polaris Action
+      uses: devsecops-test/polaris-action@22ac82f
+      with:
+        polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
+        polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
+        polarisProjectName: polaris-action-sample
     
     - name: Incremental Static Analysis with Polaris Action for a single commit
-      if: ${{github.event_name == 'push'}}
+      if: ${{github.event_name == 'push1'}}
       uses: devsecops-test/polaris-action@22ac82f
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
@@ -44,7 +43,7 @@ jobs:
         #githubCreds: "${{secrets.GITHUB_USERNAME}}:${{secrets.GITHUB_TOKEN}}"     #Needed only if repository is private
     
     - name: Incremental Static Analysis with Polaris Action for Pull Request
-      if: ${{github.event_name == 'pull_request'}}
+      if: ${{github.event_name == 'pull_request1'}}
       uses: devsecops-test/polaris-action@22ac82f
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL}}
