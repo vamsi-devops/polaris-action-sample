@@ -29,7 +29,7 @@ jobs:
       with:
         polarisServerUrl: ${{secrets.POLARIS_SERVER_URL_CSPROD}}
         polarisAccessToken: ${{secrets.POLARIS_ACCESS_TOKEN_CSPROD}}
-        polarisProjectName: polaris-action-sample
+        polarisProjectName: matthewb66/khube
     
     - name: Incremental Static Analysis with Polaris Action for a single commit
       if: ${{github.event_name == 'push1'}}
