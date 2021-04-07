@@ -1,11 +1,5 @@
 # Polaris Action Sample
 
-## Sample Configuration files for Synopsys Intelligent Orchestration Scan
-
-- [SecurityManifest.yml](https://github.com/devsecops-test/io-prescription/blob/master/2020.09.01/SecurityManifest.yml)
-
-- [WorkflowTemplate.yml](https://github.com/devsecops-test/io-prescription/blob/master/2020.09.01/WorkflowTemplate.yml)
-
 ## Building
 
 ```
