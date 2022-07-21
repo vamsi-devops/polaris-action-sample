@@ -1,0 +1,59 @@
+name: CI
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    
+    env:
+          DETECT_BLACKDUCK_RAPID_COMPARE_MODE: BOM_COMPARE_STRICT
+          #scan-mode: RAPID
+          BLACKDUCK_URL: "https://testing.blackduck.synopsys.com"
+          BLACKDUCK_API_TOKEN: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          #PROJECT: "mvnwebapp1"
+          detect-version: "7.13.2"
+          
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Java 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    #- name: Build with Maven
+    #  run: mvn -B package --file pom.xml
+    - name: BlackDuck Scan
+      uses: blackducksoftware/github-action@v2
+     # with:
+          #detect-version: 7.13.2
+          #scan-mode: RAPID
+          #detect.tools.excluded: DETECTOR
+          #blackduck.trust.cert: TRUE
+          #detect.risk.report.pdf: TRUE
+          #github-token: ${{ secrets.GITHUB_TOKEN }}
+          #blackduck-url: https://testing.blackduck.synopsys.com/
+          #blackduckapitoken: ${{ secrets.BLACKDUCK_API_TOKEN }}
+          #detect.project.name: mvnwebapp1
+          #detect.project.version.name: 1
+          #args: --detect.tools=SIGNATURE_SCAN --detect.excluded.detector.types=GRADLE --detect.project.name=$GITHUB_REPOSITORY" --detect.project.name="mvnwebapp1" --detect.excluded.detector.types=GRADLE --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name="1"
+          
+     # The Detect block, override the arguments to configure options as required
+   
+    #- name: Blackduck
+    #  uses: actions/synopsys-detect@master
+      with:
+        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=1
+      
+    - run: ls 
+    - name: Upload Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: Blackduck
+        path: /home/runner/work/mvnwebapp1/mvnwebapp1/
