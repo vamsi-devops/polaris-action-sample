@@ -30,8 +30,7 @@ jobs:
     - name: Coverity Download
       run: |
         curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE $COV_URL/downloadFile.htm?fn=$CSA.tar.gz | tar -C $RUNNER_TEMP -xzf -
-        curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE -o $RUNNER_TEMP/$CSA/bin/license.dat $COV_URL/downloadFile.htm?fn=license.dat
-        $RUNNER_TEMP/$CSA/bin/cov-configure --java
+        curl -fLsS --user $COV_USER:$COVERITY_PASSPHRASE -o $RUNNER_TEMP/$CSA/bin/license.dat $COV_URL/downloadFile.htm?fn=license.dat /tmp/$CSA/bin/cov-configure --java
     - name: Coverity Full Scan
       if: ${{ github.event_name != 'pull_request' }}
       run: |
