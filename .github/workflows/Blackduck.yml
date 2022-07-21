@@ -49,7 +49,7 @@ jobs:
     #- name: Blackduck
     #  uses: actions/synopsys-detect@master
       with:
-        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=1
+        args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2
       
     - run: ls 
     - name: Upload Results
