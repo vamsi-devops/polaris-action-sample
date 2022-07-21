@@ -51,9 +51,9 @@ jobs:
       with:
         args: --detect.project.name=Pipeline_test --detect.tools.excluded="DETECTOR" --blackduck.trust.cert=true --detect.risk.report.pdf=true --detect.project.version.name=2
       
-    - run: ls 
-    - name: Upload Results
-      uses: actions/upload-artifact@v2
-      with:
-        name: Blackduck
-        path: /home/runner/work/mvnwebapp1/mvnwebapp1/
+    #- run: ls 
+    #- name: Upload Results
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: Blackduck
+     #   path: /home/runner/work/mvnwebapp1/mvnwebapp1/
